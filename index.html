@@ -15,7 +15,7 @@
     :root {
       --primary-color: #512da8; 
       --bg-white: #ffffff;      
-      --bg-light-purple: #ede7f6; 
+      --bg-light-purple: #f4f0fa; /* Sesuai warna latar footer di gambar */
       --bg-dark-purple: #311b92;  
       --text-black: #000000;    
       --text-gray: #444444;     
@@ -36,14 +36,31 @@
     .divider { width: 60px; height: 5px; background-color: var(--primary-color); margin: 12px auto 0; border-radius: 3px; }
 
     /* =========================================
+       TOP BAR (Navbar Logo)
+       ========================================= */
+    .top-bar {
+      background-color: var(--bg-light-purple);
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 10;
+    }
+    .top-bar img {
+      height: 50px; /* Sesuaikan ukuran logo Anda */
+      object-fit: contain;
+    }
+
+    /* =========================================
        HERO SECTION (Header + foto-1)
        ========================================= */
     .hero {
       position: relative;
-      height: 80vh;
-      min-height: 500px;
-      /* Memanggil gambar lokal Anda dari folder assets */
-      background: url('./assets/foto-1.jpg') center/cover no-repeat;
+      height: 70vh; /* Sedikit dipendekkan agar proporsional dengan top bar */
+      min-height: 400px;
+      /* Memanggil gambar lokal Anda */
+      background: url('./assets/foto.jpeg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -52,72 +69,40 @@
     .hero-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to bottom, rgba(49, 27, 146, 0.7), rgba(0, 0, 0, 0.6));
+      /* Dibuat lebih tipis agar gambar orang lari tetap terlihat jelas seperti di SS */
+      background: rgba(0, 0, 0, 0.5); 
     }
-    .hero-content { position: relative; z-index: 1; color: white; padding: 0 20px; }
-    .hero-content h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-    .hero-content p { font-size: 20px; font-weight: 500; }
+    .hero-content { position: relative; z-index: 1; color: white; padding: 0 20px; width: 100%;}
+    .hero-content h1 { 
+      font-size: 52px; 
+      font-weight: 800; 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* Bayangan teks dipertebal agar terbaca di atas gambar */
+    }
 
     /* =========================================
-       CAROUSEL SECTION (Dengan Tombol Navigasi)
+       CAROUSEL SECTION
        ========================================= */
-    .carousel-section {
-      padding: 60px 0 40px;
-      background-color: var(--bg-light-purple); 
-      position: relative;
-    }
-    .carousel-container {
-      position: relative;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+    .carousel-section { padding: 60px 0 40px; background-color: #faf8fc; position: relative; }
+    .carousel-container { position: relative; max-width: 1000px; margin: 0 auto; }
     .carousel-wrapper {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 20px;
-      padding: 20px;
-      scroll-behavior: smooth;
-      /* Menghilangkan scrollbar sepenuhnya */
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
+      display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 20px;
+      scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none;
     }
-    .carousel-wrapper::-webkit-scrollbar {
-      display: none; /* Chrome, Safari and Opera */
-    }
-
+    .carousel-wrapper::-webkit-scrollbar { display: none; }
     .carousel-slide {
-      scroll-snap-align: center;
-      flex: 0 0 85%;
-      max-width: 600px;
-      height: 350px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      scroll-snap-align: center; flex: 0 0 85%; max-width: 600px; height: 350px;
+      border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-    .carousel-slide img {
-      width: 100%; height: 100%; object-fit: cover; pointer-events: none;
-    }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 
     /* Tombol Geser Kiri-Kanan */
     .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      font-size: 20px;
-      cursor: pointer;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: background-color 0.3s, transform 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: absolute; top: 50%; transform: translateY(-50%); background-color: var(--primary-color);
+      color: white; border: none; width: 45px; height: 45px; border-radius: 50%;
+      font-size: 20px; cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background-color 0.3s, transform 0.2s; display: flex; align-items: center; justify-content: center;
     }
     .carousel-btn:hover { background-color: var(--bg-dark-purple); transform: translateY(-50%) scale(1.1); }
     .btn-prev { left: -10px; }
@@ -159,21 +144,66 @@
     .btn-daftar:hover { background: #ffeb3b; transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
 
     /* =========================================
-       FOOTER
+       FOOTER (Sesuai Referensi Gambar)
        ========================================= */
-    footer { background-color: #1a1a1a; color: #cccccc; text-align: center; padding: 50px 20px; font-size: 14px; }
-    footer h3 { color: #ffffff; margin-bottom: 15px; font-size: 22px; font-weight: 700; }
-    footer p { margin-bottom: 8px; }
+    footer {
+      background-color: var(--bg-light-purple);
+      color: #333333;
+      padding: 50px 20px 20px;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      padding-bottom: 40px;
+    }
+    .footer-logo {
+      height: 70px;
+      object-fit: contain;
+    }
+    .footer-tagline {
+      flex: 1;
+      min-width: 250px;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--primary-color);
+    }
+    .footer-address {
+      flex: 1;
+      min-width: 280px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-gray);
+    }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 25px;
+      border-top: 1px dashed #d1c4e9; /* Garis batas putus-putus */
+      font-size: 14px;
+      color: #777;
+    }
 
     /* =========================================
        RESPONSIVE
        ========================================= */
     @media (max-width: 768px) {
-      .hero-content h1 { font-size: 32px; }
+      .hero-content h1 { font-size: 38px; }
       .carousel-slide { height: 250px; flex: 0 0 90%; }
       .tnc-grid { grid-template-columns: 1fr; } 
-      /* Sembunyikan tombol navigasi di HP, biarkan user swipe layar */
       .carousel-btn { display: none; }
+      
+      /* Footer menyusun ke bawah di HP */
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .top-bar { justify-content: center; }
     }
 
     /* =========================================
@@ -192,14 +222,21 @@
 </head>
 <body>
 
+  <!-- TOP BAR (Logo Permata) -->
+  <div class="top-bar">
+    <!-- Pastikan file logo Anda ada di folder assets bernama logo.png -->
+    <img src="./assets/logo.png" alt="Logo RS Permata Cirebon">
+  </div>
+
+  <!-- HERO SECTION -->
   <header class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1 class="animate-up">Permata Healthy Run 5K</h1>
-      <p class="animate-up" style="transition-delay: 0.2s;">Berlari Bersama, Sehat Bersama di Cirebon</p>
     </div>
   </header>
 
+  <!-- CAROUSEL SECTION -->
   <section class="carousel-section">
     <div class="section-title animate-up">
       <h2>Galeri Keseruan</h2>
@@ -208,7 +245,6 @@
     <div class="carousel-container animate-up">
       <button class="carousel-btn btn-prev" aria-label="Previous">&#10094;</button>
       <div class="carousel-wrapper" id="slider">
-        <!-- Ganti URL src dengan gambar event Anda -->
         <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?q=80&w=800&auto=format&fit=crop" alt="Lari 1"></div>
         <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800&auto=format&fit=crop" alt="Lari 2"></div>
         <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=800&auto=format&fit=crop" alt="Lari 3"></div>
@@ -218,6 +254,7 @@
     </div>
   </section>
 
+  <!-- TENTANG EVENT -->
   <section class="container animate-up">
     <div class="section-title">
       <h2>Tentang Event</h2>
@@ -228,6 +265,7 @@
     </div>
   </section>
 
+  <!-- YANG PERLU DISIAPKAN -->
   <section class="container" style="padding-top: 0;">
     <div class="section-title animate-up">
       <h2>Persiapan Pendaftaran</h2>
@@ -237,7 +275,7 @@
       <div class="prep-card animate-up" style="transition-delay: 0.1s;">
         <div class="prep-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 10h3v7H4zm6.5 0h3v7h-3zM2 19h20v3H2zm15-9h3v7h-3zm-5-9L2 6v2h20V6z"/></svg></div>
         <div class="prep-title">Biaya Pendaftaran</div>
-        <div class="prep-desc">Transfer biaya pendaftaran sebesar:<br><div class="price-tag">Rp. 95.011,-</div><br>ke <strong>Bank XXX<br>A/C No. XXX</strong></div>
+        <div class="prep-desc">Transfer biaya pendaftaran sebesar:<br><div class="price-tag">Rp. 95.011,-</div><br>ke <strong>Bank Mandiri<br>Ke No Rekening 1340003366779</strong></div>
       </div>
       <div class="prep-card animate-up" style="transition-delay: 0.2s;">
         <div class="prep-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
@@ -252,6 +290,7 @@
     </div>
   </section>
 
+  <!-- SYARAT & KETENTUAN -->
   <section class="tnc-section animate-up">
     <div class="container">
       <div class="section-title">
@@ -267,32 +306,47 @@
     </div>
   </section>
 
+  <!-- CTA / TAUTAN GOOGLE FORM -->
   <section class="cta-section animate-up">
     <h2>Sudah Siap Berlari Bersama Kami?</h2>
     <a href="#" class="btn-daftar" target="_blank">Daftar Di Sini</a>
   </section>
 
+  <!-- FOOTER DESAIN BARU -->
   <footer>
-    <h3>Permata Healthy Run 5K</h3>
-    <p>Jl. Tuparev No.117, Pilangsari, Kec. Kedawung</p>
-    <p>Kabupaten Cirebon, Jawa Barat 45153</p>
-    <p>Telp: (0231) 8338877</p>
-    <p style="margin-top: 20px; font-size: 12px; color: #555555;">&copy; 2026 Permata Healthy Run. All rights reserved.</p>
+    <div class="footer-container">
+      <!-- 1. Logo RS -->
+      <img src="./assets/logo.png" alt="Logo RS Permata" class="footer-logo">
+      
+      <!-- 2. Tagline -->
+      <div class="footer-tagline">
+        Melayani Sepenuh Hati Dengan<br>Kasih Sayang
+      </div>
+      
+      <!-- 3. Alamat Lengkap -->
+      <div class="footer-address">
+        Jl. Tuparev No.117, Pilangsari, Kec.<br>
+        Kedawung, Kabupaten Cirebon,<br>
+        Jawa Barat 45153<br><br>
+        (0231) 8338877
+      </div>
+    </div>
+
+    <!-- Garis putus-putus dan Copyright -->
+    <div class="footer-bottom">
+      &copy; Rumah Sakit Permata Cirebon
+    </div>
   </footer>
 
-  <!-- =========================================
-       JAVASCRIPT
-       ========================================= -->
+  <!-- SCRIPT JAVASCRIPT -->
   <script>
-    // 1. CAROUSEL SCRIPT
     const slider = document.getElementById('slider');
     const btnPrev = document.querySelector('.btn-prev');
     const btnNext = document.querySelector('.btn-next');
 
-    // Fungsi geser carousel ketika tombol ditekan
     if(btnNext && btnPrev && slider) {
       btnNext.addEventListener('click', () => {
-        const slideWidth = slider.querySelector('.carousel-slide').clientWidth + 20; // +20 untuk gap
+        const slideWidth = slider.querySelector('.carousel-slide').clientWidth + 20;
         slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
       });
 
@@ -302,11 +356,9 @@
       });
     }
 
-    // Auto-Play Carousel (bergeser otomatis tiap 3,5 detik)
     let autoScroll = setInterval(() => {
       if(slider) {
         const slideWidth = slider.querySelector('.carousel-slide').clientWidth + 20;
-        // Jika sudah mencapai ujung kanan, kembali ke kiri awal
         if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
           slider.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
@@ -315,7 +367,6 @@
       }
     }, 3500);
 
-    // Hentikan auto-scroll jika pengunjung sedang menggeser/menyentuh carousel
     if(slider) {
       slider.addEventListener('mouseenter', () => clearInterval(autoScroll));
       slider.addEventListener('mouseleave', () => {
@@ -330,27 +381,18 @@
       });
     }
 
-    // 2. SCROLL ANIMATION (Efek elemen muncul dari bawah)
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.15 // Elemen akan ter-trigger saat 15% bagiannya masuk layar
-    };
-
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
-          observer.unobserve(entry.target); // Hanya dijalankan sekali saat di-scroll
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    document.querySelectorAll('.animate-up').forEach((el) => {
-      observer.observe(el);
-    });
+    document.querySelectorAll('.animate-up').forEach((el) => { observer.observe(el); });
 
-    // Menjalankan animasi header sesaat setelah halaman dimuat
     window.addEventListener('load', () => {
       const heroText = document.querySelectorAll('.hero-content .animate-up');
       heroText.forEach(el => el.classList.add('show'));
