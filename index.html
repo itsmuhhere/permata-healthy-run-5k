@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permata Healthy Run 5K - 2026</title>
+  
+  <!-- Font Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* =========================================
+       VARIABEL WARNA
+       ========================================= */
+    :root {
+      --primary-color: #512da8; 
+      --bg-white: #ffffff;      
+      --bg-light-purple: #ede7f6; 
+      --bg-dark-purple: #311b92;  
+      --text-black: #000000;    
+      --text-gray: #444444;     
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-white);
+      color: var(--text-black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+    .section-title { text-align: center; margin-bottom: 40px; }
+    .section-title h2 { font-size: 28px; font-weight: 800; text-transform: uppercase; color: var(--primary-color); letter-spacing: 1px; }
+    .divider { width: 60px; height: 5px; background-color: var(--primary-color); margin: 12px auto 0; border-radius: 3px; }
+
+    /* =========================================
+       HERO SECTION (Header + foto-1)
+       ========================================= */
+    .hero {
+      position: relative;
+      height: 80vh;
+      min-height: 500px;
+      /* Memanggil gambar lokal Anda dari folder assets */
+      background: url('./assets/foto-1.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(49, 27, 146, 0.7), rgba(0, 0, 0, 0.6));
+    }
+    .hero-content { position: relative; z-index: 1; color: white; padding: 0 20px; }
+    .hero-content h1 { font-size: 48px; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+    .hero-content p { font-size: 20px; font-weight: 500; }
+
+    /* =========================================
+       CAROUSEL SECTION (Dengan Tombol Navigasi)
+       ========================================= */
+    .carousel-section {
+      padding: 60px 0 40px;
+      background-color: var(--bg-light-purple); 
+      position: relative;
+    }
+    .carousel-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .carousel-wrapper {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 20px;
+      scroll-behavior: smooth;
+      /* Menghilangkan scrollbar sepenuhnya */
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .carousel-wrapper::-webkit-scrollbar {
+      display: none; /* Chrome, Safari and Opera */
+    }
+
+    .carousel-slide {
+      scroll-snap-align: center;
+      flex: 0 0 85%;
+      max-width: 600px;
+      height: 350px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .carousel-slide img {
+      width: 100%; height: 100%; object-fit: cover; pointer-events: none;
+    }
+
+    /* Tombol Geser Kiri-Kanan */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background-color 0.3s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-btn:hover { background-color: var(--bg-dark-purple); transform: translateY(-50%) scale(1.1); }
+    .btn-prev { left: -10px; }
+    .btn-next { right: -10px; }
+
+    /* =========================================
+       ABOUT SECTION
+       ========================================= */
+    .about-section { text-align: center; max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--text-gray); }
+
+    /* =========================================
+       YANG PERLU DISIAPKAN
+       ========================================= */
+    .prep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .prep-card { background: var(--bg-white); padding: 30px 20px; border-radius: 16px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-bottom: 5px solid var(--primary-color); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .prep-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+    .prep-icon { width: 70px; height: 70px; background: var(--bg-light-purple); color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .prep-icon svg { width: 35px; height: 35px; }
+    .prep-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--primary-color); }
+    .prep-desc { font-size: 14px; color: var(--text-gray); }
+    .price-tag { display: inline-block; background: var(--primary-color); color: var(--bg-white); padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 16px; margin: 12px 0; }
+
+    /* =========================================
+       SYARAT & KETENTUAN
+       ========================================= */
+    .tnc-section { background-color: var(--bg-white); }
+    .tnc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .tnc-card { background: #fafafa; padding: 24px; border-radius: 12px; border-left: 5px solid var(--primary-color); display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .tnc-number { width: 36px; height: 36px; background: var(--primary-color); color: var(--bg-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; flex-shrink: 0; }
+    .tnc-text { font-size: 14px; color: var(--text-black); }
+    .tnc-text strong { color: var(--primary-color); }
+
+    /* =========================================
+       CTA / BUTTON SECTION
+       ========================================= */
+    .cta-section { text-align: center; padding: 70px 20px; background: linear-gradient(135deg, var(--bg-dark-purple), var(--primary-color)); color: white; }
+    .cta-section h2 { margin-bottom: 30px; font-size: 32px; font-weight: 800; color: white;}
+    .btn-daftar { display: inline-block; background: #ffc107; color: #000; font-size: 18px; font-weight: 700; text-decoration: none; padding: 18px 45px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+    .btn-daftar:hover { background: #ffeb3b; transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    footer { background-color: #1a1a1a; color: #cccccc; text-align: center; padding: 50px 20px; font-size: 14px; }
+    footer h3 { color: #ffffff; margin-bottom: 15px; font-size: 22px; font-weight: 700; }
+    footer p { margin-bottom: 8px; }
+
+    /* =========================================
+       RESPONSIVE
+       ========================================= */
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 32px; }
+      .carousel-slide { height: 250px; flex: 0 0 90%; }
+      .tnc-grid { grid-template-columns: 1fr; } 
+      /* Sembunyikan tombol navigasi di HP, biarkan user swipe layar */
+      .carousel-btn { display: none; }
+    }
+
+    /* =========================================
+       ANIMASI KELAS (Dijalankan oleh JS)
+       ========================================= */
+    .animate-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .animate-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="animate-up">Permata Healthy Run 5K</h1>
+      <p class="animate-up" style="transition-delay: 0.2s;">Berlari Bersama, Sehat Bersama di Cirebon</p>
+    </div>
+  </header>
+
+  <section class="carousel-section">
+    <div class="section-title animate-up">
+      <h2>Galeri Keseruan</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="carousel-container animate-up">
+      <button class="carousel-btn btn-prev" aria-label="Previous">&#10094;</button>
+      <div class="carousel-wrapper" id="slider">
+        <!-- Ganti URL src dengan gambar event Anda -->
+        <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?q=80&w=800&auto=format&fit=crop" alt="Lari 1"></div>
+        <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800&auto=format&fit=crop" alt="Lari 2"></div>
+        <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=800&auto=format&fit=crop" alt="Lari 3"></div>
+        <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=800&auto=format&fit=crop" alt="Lari 4"></div>
+      </div>
+      <button class="carousel-btn btn-next" aria-label="Next">&#10095;</button>
+    </div>
+  </section>
+
+  <section class="container animate-up">
+    <div class="section-title">
+      <h2>Tentang Event</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="about-section">
+      <p>Permata Healthy Run 5K adalah ajang lari gembira yang diselenggarakan untuk mengajak masyarakat Cirebon dan sekitarnya menjalani gaya hidup sehat. Acara ini terbuka untuk semua kalangan. Segera daftarkan diri Anda dan jadilah bagian dari pergerakan sehat ini!</p>
+    </div>
+  </section>
+
+  <section class="container" style="padding-top: 0;">
+    <div class="section-title animate-up">
+      <h2>Persiapan Pendaftaran</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="prep-grid">
+      <div class="prep-card animate-up" style="transition-delay: 0.1s;">
+        <div class="prep-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 10h3v7H4zm6.5 0h3v7h-3zM2 19h20v3H2zm15-9h3v7h-3zm-5-9L2 6v2h20V6z"/></svg></div>
+        <div class="prep-title">Biaya Pendaftaran</div>
+        <div class="prep-desc">Transfer biaya pendaftaran sebesar:<br><div class="price-tag">Rp. 95.011,-</div><br>ke <strong>Bank XXX<br>A/C No. XXX</strong></div>
+      </div>
+      <div class="prep-card animate-up" style="transition-delay: 0.2s;">
+        <div class="prep-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        <div class="prep-title">Bukti Transfer</div>
+        <div class="prep-desc">Siapkan <strong>Foto atau hasil scan</strong> dari bukti transfer pembayaran di atas.</div>
+      </div>
+      <div class="prep-card animate-up" style="transition-delay: 0.3s;">
+        <div class="prep-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2zm0 12h16V8H4v10zm4.5-4c1.38 0 2.5-1.12 2.5-2.5S9.88 9 8.5 9 6 10.12 6 11.5 7.12 14 8.5 14zm0-4c.83 0 1.5.67 1.5 1.5S9.33 13 8.5 13 7 12.33 7 11.5 7.67 10 8.5 10zm-4 6h8v-1c0-1.33-2.67-2-4-2s-4 .67-4 2v1zm14-5h-6v-1h6v1zm0 3h-6v-1h6v1z"/></svg></div>
+        <div class="prep-title">KTP</div>
+        <div class="prep-desc">Siapkan KTP asli untuk menjadi <strong>referensi saat pengisian form pendaftaran</strong>.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tnc-section animate-up">
+    <div class="container">
+      <div class="section-title">
+        <h2>Syarat dan Ketentuan</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="tnc-grid">
+        <div class="tnc-card"><div class="tnc-number">1</div><div class="tnc-text">Pendaftaran akan dibuka mulai tanggal <strong>01 Oktober 2026</strong> sampai <strong>31 Oktober 2026</strong>.</div></div>
+        <div class="tnc-card"><div class="tnc-number">2</div><div class="tnc-text">Kuota terbatas. Silakan segera mendaftar pada rentang waktu yang telah ditentukan di atas.</div></div>
+        <div class="tnc-card"><div class="tnc-number">3</div><div class="tnc-text">Race Pack dapat diambil setelah melengkapi isian form, di <strong>RS Permata Cirebon</strong>, <strong>14 Nopember 2026</strong> (08.00 s/d 17.00 WIB).</div></div>
+        <div class="tnc-card"><div class="tnc-number">4</div><div class="tnc-text">Untuk pengambilan Race Pack yang diwakilkan, harus membawa <strong>Surat Kuasa</strong> dan <strong>fotokopi KTP</strong> peserta.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section animate-up">
+    <h2>Sudah Siap Berlari Bersama Kami?</h2>
+    <a href="#" class="btn-daftar" target="_blank">Daftar Di Sini</a>
+  </section>
+
+  <footer>
+    <h3>Permata Healthy Run 5K</h3>
+    <p>Jl. Tuparev No.117, Pilangsari, Kec. Kedawung</p>
+    <p>Kabupaten Cirebon, Jawa Barat 45153</p>
+    <p>Telp: (0231) 8338877</p>
+    <p style="margin-top: 20px; font-size: 12px; color: #555555;">&copy; 2026 Permata Healthy Run. All rights reserved.</p>
+  </footer>
+
+  <!-- =========================================
+       JAVASCRIPT
+       ========================================= -->
+  <script>
+    // 1. CAROUSEL SCRIPT
+    const slider = document.getElementById('slider');
+    const btnPrev = document.querySelector('.btn-prev');
+    const btnNext = document.querySelector('.btn-next');
+
+    // Fungsi geser carousel ketika tombol ditekan
+    if(btnNext && btnPrev && slider) {
+      btnNext.addEventListener('click', () => {
+        const slideWidth = slider.querySelector('.carousel-slide').clientWidth + 20; // +20 untuk gap
+        slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+      });
+
+      btnPrev.addEventListener('click', () => {
+        const slideWidth = slider.querySelector('.carousel-slide').clientWidth + 20;
+        slider.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+      });
+    }
+
+    // Auto-Play Carousel (bergeser otomatis tiap 3,5 detik)
+    let autoScroll = setInterval(() => {
+      if(slider) {
+        const slideWidth = slider.querySelector('.carousel-slide').clientWidth + 20;
+        // Jika sudah mencapai ujung kanan, kembali ke kiri awal
+        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+        }
+      }
+    }, 3500);
+
+    // Hentikan auto-scroll jika pengunjung sedang menggeser/menyentuh carousel
+    if(slider) {
+      slider.addEventListener('mouseenter', () => clearInterval(autoScroll));
+      slider.addEventListener('mouseleave', () => {
+        autoScroll = setInterval(() => {
+          const slideWidth = slider.querySelector('.carousel-slide').clientWidth + 20;
+          if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+            slider.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+          }
+        }, 3500);
+      });
+    }
+
+    // 2. SCROLL ANIMATION (Efek elemen muncul dari bawah)
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15 // Elemen akan ter-trigger saat 15% bagiannya masuk layar
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target); // Hanya dijalankan sekali saat di-scroll
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-up').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Menjalankan animasi header sesaat setelah halaman dimuat
+    window.addEventListener('load', () => {
+      const heroText = document.querySelectorAll('.hero-content .animate-up');
+      heroText.forEach(el => el.classList.add('show'));
+    });
+  </script>
+</body>
+</html>
