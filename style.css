@@ -102,6 +102,33 @@
     .about-section { text-align: center; max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--text-gray); }
 
     /* =========================================
+       BENEFIT PESERTA
+       ========================================= */
+    .benefits-section { background: #faf8fc; overflow: hidden; }
+    .benefits-section .container { max-width: none; padding-left: 0; padding-right: 0; }
+    .benefits-section .section-title { padding: 0 20px; }
+    .benefits-marquee { overflow: hidden; width: 100%; }
+    .benefits-track {
+      display: flex; width: max-content; gap: 24px; padding: 10px 0 20px;
+      animation: benefits-scroll 32s linear infinite;
+    }
+    .benefits-marquee:hover .benefits-track,
+    .benefits-marquee:focus-within .benefits-track { animation-play-state: paused; }
+    .benefit-card {
+      display: flex; align-items: center; width: min(570px, 82vw); min-height: 245px;
+      background: var(--bg-white); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 8px 22px rgba(43, 25, 91, 0.12); border: 1px solid #eee8fa;
+    }
+    .benefit-image { width: 52%; height: 245px; flex-shrink: 0; background: #fff; }
+    .benefit-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .benefit-copy { padding: 28px 24px 28px 8px; }
+    .benefit-kicker { color: #e6008d; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+    .benefit-copy h3 { color: var(--primary-color); font-size: 21px; margin: 8px 0; }
+    .benefit-copy p { color: var(--text-gray); font-size: 13px; line-height: 1.6; }
+    @keyframes benefits-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 12px)); } }
+    @media (prefers-reduced-motion: reduce) { .benefits-track { animation: none; } }
+
+    /* =========================================
        YANG PERLU DISIAPKAN
        ========================================= */
     .prep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
@@ -211,6 +238,11 @@
       .footer-logo{width: 30%;}
       .hero-content h1 { font-size: 38px; }
       .carousel-slide { height: 250px; flex: 0 0 90%; }
+      .benefit-card { width: 86vw; min-height: 210px; }
+      .benefit-image { height: 210px; }
+      .benefit-copy { padding: 20px 16px 20px 4px; }
+      .benefit-copy h3 { font-size: 17px; }
+      .benefit-copy p { font-size: 12px; }
       .tnc-grid { grid-template-columns: 1fr; } 
       .carousel-btn { display: none; }
       .instagram-icon, .whatsapp-icon {
