@@ -133,6 +133,14 @@
     .btn-daftar:hover { background: #ffeb3b; transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
 
     /* =========================================
+       CTA / BUTTON SECTION
+       ========================================= */
+
+    .svg-location{
+      width: 3%;
+    }
+
+    /* =========================================
        FOOTER (Sesuai Referensi Gambar)
        ========================================= */
     footer {
@@ -223,6 +231,7 @@
         text-align: center;
       }
       .maps{width: 100%;}
+      .svg-location{width: 5%;}
     }
 
     /* =========================================
